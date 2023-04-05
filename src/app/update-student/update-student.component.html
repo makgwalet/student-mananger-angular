@@ -1,0 +1,135 @@
+<div class="container">
+  <h3>Update new student</h3>
+  <form [formGroup]="studentForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+    <div class="form-group col-sm-6">
+      <label>first Name</label>
+      <input
+        type="text"
+        formControlName="first_name"
+        class="form-control"
+        [(ngModel)]="student.first_name"
+        [ngClass]="{
+          'is-invalid': submitted && studentFormControl['first_name'].errors
+        }"
+        required="true"
+      />
+      <div
+        *ngIf="submitted && studentFormControl['first_name'].errors"
+        class="invalid-feedback"
+      >
+        <div *ngIf="studentFormControl['first_name'].errors['required']">
+          first name is required
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group col-sm-6">
+      <label>Last Name</label>
+      <input
+        type="text"
+        formControlName="last_name"
+        class="form-control"
+        [(ngModel)]="student.last_name"
+        [ngClass]="{
+          'is-invalid': submitted && studentFormControl['last_name'].errors
+        }"
+        required="true"
+      />
+      <div
+        *ngIf="submitted && studentFormControl['last_name'].errors"
+        class="invalid-feedback"
+      >
+        <div *ngIf="studentFormControl['last_name'].errors['required']">
+          Last name is required
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group col-sm-6">
+      <label>Mobile Number</label>
+      <input
+        type="text"
+        formControlName="mobile_number"
+        maxlength="9"
+        class="form-control"
+        [(ngModel)]="student.mobile_number"
+        [ngClass]="{
+          'is-invalid': submitted && studentFormControl['mobile_number'].errors
+        }"
+        required="true"
+      />
+      <div
+        *ngIf="submitted && studentFormControl['mobile_number'].errors"
+        class="invalid-feedback"
+      >
+        <div *ngIf="studentFormControl['mobile_number'].errors['required']">
+          Mobile Number is required
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group col-sm-6">
+      <label>Email Address</label>
+      <input
+        type="text"
+        formControlName="email_address"
+        class="form-control"
+        [(ngModel)]="student.email_address"
+        [ngClass]="{
+          'is-invalid': submitted && studentFormControl['email_address'].errors
+        }"
+        required="true"
+      />
+      <div
+        *ngIf="submitted && studentFormControl['email_address'].errors"
+        class="invalid-feedback"
+      >
+        <div *ngIf="studentFormControl['email_address'].errors['required']">
+          Email Address is required
+        </div>
+        <div *ngIf="studentFormControl['email_address'].errors['email']">
+          Email is invalid
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group col-sm-6">
+      <label>Date of Birth</label>
+      <input
+        type="date"
+        formControlName="dateOfBirth"
+        class="form-control"
+        [(ngModel)]="student.dateOfBirth"
+        [ngClass]="{
+          'is-invalid': submitted && studentFormControl['dateOfBirth'].errors
+        }"
+        required="true"
+      />
+      <div
+        *ngIf="submitted && studentFormControl['dateOfBirth'].errors"
+        class="invalid-feedback"
+      >
+        <div *ngIf="studentFormControl['dateOfBirth'].errors['required']">
+          Email Address is required
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+    <br/>
+
+
+
+    <div class="form-group row">
+      <button type="submit" class="btn btn-primary col-sm-6">Update</button>
+      <button
+        type="button"
+        (click)="onReset()"
+        class="btn btn-success col-sm-6">
+        Cancel
+      </button>
+    </div>
+  </form>
+</div>

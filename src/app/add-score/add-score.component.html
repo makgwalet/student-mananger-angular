@@ -1,0 +1,39 @@
+<h2>Add Score</h2>
+<form [formGroup]="studentScoreForm" (ngSubmit)="onSubmit()">
+  <div class="row">
+    <div class="form-group col-sm-6">
+      <label>Score</label>
+      <input
+        type="text"
+        formControlName="score"
+        class="form-control"
+        [(ngModel)]="score.score"
+        [ngClass]="{
+          'is-invalid': submitted && studentScoreFormControl['score'].errors}"
+        required="true"/>
+      <div
+        *ngIf="submitted && studentScoreFormControl['score'].errors"
+        class="invalid-feedback">
+        <div *ngIf="studentScoreFormControl['score'].errors['required']">
+          Score is required
+        </div>
+        <div *ngIf="studentScoreFormControl['score'].errors['max']">
+          Current Score must be between 0 and 100
+        </div>
+        <div *ngIf="studentScoreFormControl['score'].errors['min']">
+          Current Score must be between 0 and 100
+        </div>
+      </div>
+    </div>
+  </div>
+  <br />
+  <br />
+  <div class="row">
+    <div class="form-group">
+      <button class="btn btn-success col-sm-6" type="submit">Submit</button>
+      <button type="button" (click)="onReset()" class="btn btn-success col-sm-6">
+        Cancel
+      </button>
+    </div>
+  </div>
+</form>
